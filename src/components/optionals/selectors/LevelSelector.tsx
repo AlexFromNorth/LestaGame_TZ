@@ -1,0 +1,33 @@
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { filterByLvl } from '../../../redux/slices/itemsSlice';
+
+function LevelSelector() {
+  const dispatch = useDispatch()
+  const [selectedLevel, setSelectedLevel] = useState(0);
+
+  const handleLevelChange = (event) => {
+    setSelectedLevel(event.target.value);
+    dispatch(filterByLvl(event.target.value))
+  };
+
+  return (
+    <div>
+      <label htmlFor="levelSelect">Выберите уровень:</label>
+      <select
+        id="levelSelect"
+        value={selectedLevel}
+        onChange={handleLevelChange}
+      >
+        {Array.from({ length: 10 }, (_, index) => (
+          <option key={index + 1} value={index + 1}>
+            {index + 1}
+          </option>
+        ))}
+      </select>
+      <p>Выбранный уровень: {selectedLevel}</p>
+    </div>
+  );
+}
+
+export default LevelSelector;

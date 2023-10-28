@@ -4,13 +4,15 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import styles from "./App.module.scss";
 import { GET_VEHICLES } from "./api/api";
-import Search from "./components/search/Search";
+import Search from "./components/optionals/Optionals";
 import { Vehicles } from "./types/types";
 
 import { addItems, filterByNation } from "./redux/slices/itemsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import { useQuery } from "@apollo/client";
+import CartItem from "./components/cartItem/cartItem";
+import Optionals from "./components/optionals/Optionals";
 
 function App() {
   const dispatch = useDispatch();
@@ -21,88 +23,40 @@ function App() {
     },
   });
 
-  const data = useSelector((state) => state.main.data);
-
-  // useEffect(()=>{
-  //   if(loading===false){
-  //     dispatch
-  //   }
-
-  // },[loading])
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       // const data = await vehicles();
-
-  //       // dispatch(addItems(data));
-  //     } catch (error) {
-  //       console.error("Error fetching vehicle data: ", error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
-
-  const clickHandler = (action) => {
-    dispatch(filterByNation(action));
-  };
+  const data = useSelector((state) => state.main);
+  console.log(data)
 
   const renderContent = useCallback(() => {
     if (error) {
       return (
-        <div className="wrapper">
+        <div className={styles.container}>
           <span>ОШИБКА!!!</span>
         </div>
       );
-    } else if (!data?.length) {
+    } else if (!data?.data.length) {
       return (
-        <div className="wrapper">
-          <span>ДАННЫХ НЕТ, БРАТИШКА</span>
+        <div className={styles.container}>
+          <span>ДАННЫХ НЕТ</span>
         </div>
       );
     } else {
-      return data?.map((item: Vehicles, index: number) => (
-        <div
-          className="item"
-          key={index}
-          style={{
-            backgroundImage: `url(${item.icons.medium})`,
-            backgroundColor: item.nation.color,
-          }}
-        >
-          <button
-            onClick={() => {
-              clickHandler("Japan");
-            }}
-          >
-            {index}
-          </button>
-          <div>
-            <img src={item.nation.icons.small} alt="nation" />
-            <img src={item.type.icons.default} alt="type" />
-
-            <span>{item.level}</span>
-          </div>
-
-          <p>{item.title}</p>
-          <p>{item.description}</p>
-        </div>
+      return data?.filteredData.map((item: Vehicles, index) => (
+        <CartItem key={index} item={item}  />
       ));
     }
-  }, [error, data]);
+  }, [error, data.data, data.filteredData]);
 
   if (loading) {
     return (
-      <div className="wrapper">
-        <span>ждите</span>
+      <div className={styles.container}>
+        <span>Ждите</span>
       </div>
     );
   }
 
   return (
-    <div className="wrapper">
-      <Search />
+    <div className={`${styles.container} `}>
+      <Optionals />
       <div className={styles.wrapper}>{renderContent()}</div>
     </div>
   );

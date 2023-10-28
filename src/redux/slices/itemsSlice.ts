@@ -1,27 +1,48 @@
-// itemsSlice.js
-
 import { createSlice } from "@reduxjs/toolkit";
 import { Vehicles } from "../../types/types";
 
 const initialState = {
   data: [],
+  isFiltered: false,
+  filteredData: [],
 };
 
 const itemsSlice = createSlice({
-  name: "items",
-  initialState,
-  reducers: {
-    filterByNation(state, action) {      
-      state.data = state.data.filter(
-        (item: Vehicles) => item.nation.title === action.payload
-      );
+    name: "items",
+    initialState,
+    reducers: {
+      filterByNation(state, action) {
+        state.isFiltered = true;
+        state.filteredData = state.data.filter(
+          (item) => item.nation.title === action.payload
+        );
+      },
+      filterByType(state, action) {
+        state.isFiltered = true;
+        state.filteredData = state.data.filter(
+          (item) => item.type.title === action.payload
+        );
+      },
+      filterByLvl(state, action) {
+        state.isFiltered = true;
+        state.filteredData = state.data.filter(
+          (item) => item.level === +action.payload
+        );
+      },
+      addItems(state, action) {
+        state.data = action.payload;
+        state.isFiltered = false;
+        state.filteredData = state.data;
+      },
+      resetFilter(state) {
+        state.isFiltered = false;
+        state.filteredData = state.data;
+      },
     },
-    addItems(state, action) {
-      state.data = action.payload;
-    },
-  },
-});
+  });
+  
 
-export const { addItems, filterByNation } = itemsSlice.actions;
+export const { addItems, filterByNation, filterByLvl, filterByType, resetFilter } =
+  itemsSlice.actions;
 
 export default itemsSlice.reducer;
