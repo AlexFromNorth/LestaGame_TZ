@@ -3,6 +3,6 @@ import itemsSlice from './slices/itemsSlice'
 
 export const store = configureStore({
   reducer: {
-    vehicles: itemsSlice
-  },
-})
+    main: itemsSlice
+  }
+});

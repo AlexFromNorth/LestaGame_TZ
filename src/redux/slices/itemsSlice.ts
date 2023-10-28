@@ -1,26 +1,27 @@
 // itemsSlice.js
 
 import { createSlice } from "@reduxjs/toolkit";
-import { CatalogState } from "../types/types";
-import apiCatalog from "../api/api";
-import { vehicles } from "../../api/api";
+import { Vehicles } from "../../types/types";
 
 const initialState = {
-  vehicles,
+  data: [],
 };
 
 const itemsSlice = createSlice({
   name: "items",
   initialState,
   reducers: {
-    addItem(state, action) {
-    //   state.basket.push(action.payload);
-    //   localStorage.setItem("basket", JSON.stringify(state.basket)); // Сохраняем корзину в localStorage
+    filterByNation(state, action) {      
+      state.data = state.data.filter(
+        (item: Vehicles) => item.nation.title === action.payload
+      );
     },
-
+    addItems(state, action) {
+      state.data = action.payload;
+    },
   },
 });
 
-export const { addItem } = itemsSlice.actions;
+export const { addItems, filterByNation } = itemsSlice.actions;
 
 export default itemsSlice.reducer;
