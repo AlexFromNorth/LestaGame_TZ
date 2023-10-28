@@ -13,19 +13,19 @@ const itemsSlice = createSlice({
     reducers: {
       filterByNation(state, action) {
         state.isFiltered = true;
-        state.filteredData = state.data.filter(
+        state.filteredData = state.filteredData.filter(
           (item) => item.nation.title === action.payload
         );
       },
       filterByType(state, action) {
         state.isFiltered = true;
-        state.filteredData = state.data.filter(
+        state.filteredData = state.filteredData.filter(
           (item) => item.type.title === action.payload
         );
       },
       filterByLvl(state, action) {
         state.isFiltered = true;
-        state.filteredData = state.data.filter(
+        state.filteredData = state.filteredData.filter(
           (item) => item.level === +action.payload
         );
       },
