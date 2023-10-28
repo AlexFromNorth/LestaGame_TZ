@@ -1,18 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { vehicles } from "../api/api";
+import { Vehicles } from "../types/types";
 
-const vehicle = await vehicles()
+const vehicle:Vehicles = await vehicles()
 
 const YourComponent = () => {
-//   const initialState = useSelector((state) => state.vehicles); // Здесь "vehicles" соответствует имени вашего слайса в хранилище
-console.log(vehicle.vehicles)
+
+useEffect(()=>{
+    console.log(vehicle)
+
+},[])
 
 return (
     <div>
       <h1>Vehicle Data</h1>
-      {vehicle.vehicles.map(item=>(
-        <div>
+      {vehicle.vehicles.map((item, index)=>(
+        <div key={index}>
             <h4>{item.title}</h4>
             <p>{item.level}</p>
         </div>

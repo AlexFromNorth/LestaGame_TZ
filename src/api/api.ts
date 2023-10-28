@@ -1,3 +1,4 @@
+import { vehicles } from './api';
 const url = 'https://vortex.korabli.su/api/graphql/glossary/'
 
 const makeRequest = (query) => {
@@ -11,30 +12,25 @@ const makeRequest = (query) => {
 }
 
 export const vehicles = async () => makeRequest(`query items{
-    vehicles {
+  vehicles {
+    title
+    description
+    icons {
+      medium
+    }
+    level
+    type {
       title
-      description
       icons {
-        large
-        medium
-      }
-      level
-      type {
-        name
-        title
-        icons {
-          default
-        }
-      }
-      nation {
-        name
-        title
-        color
-        icons {
-          small
-          medium
-          large
-        }
+        default
       }
     }
-  }`)
+    nation {
+      title
+      color
+      icons {
+        small
+      }
+    }
+  }
+}`).then(res=>res.vehicles)
