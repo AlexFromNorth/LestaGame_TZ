@@ -1,17 +1,19 @@
-import React from "react";
-
+// components
 import LevelSelector from "./selectors/LevelSelector";
 import NationalSelector from "./selectors/NationalSelector";
 import ShipTypeSelector from "./selectors/ShipTypeSelector";
 
+// styles
 import styles from './Optionals.module.scss'
 
+// redux
 import { useDispatch, useSelector } from "react-redux";
 import { resetFilter } from "../../redux/slices/itemsSlice";
-
 import { vehicles } from "../../redux/selectors/vehiclesSelector";
 
-
+//------------
+// Optionals
+//------------
 const Optionals = () => {
   const dispatch = useDispatch()
 

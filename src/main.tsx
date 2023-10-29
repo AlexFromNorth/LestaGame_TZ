@@ -1,7 +1,11 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+// components
 import App from "./App.tsx";
+
+//  styles
 import "./index.css";
+
+// redux
+import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { store } from "./redux/store.ts";
 

@@ -1,5 +1,7 @@
-import React from "react";
+// styles
 import styles from "./cartItem.module.scss";
+
+// types
 import { VehicleItem } from "../../types/types";
 
 const CartItem = ({ item }:{item:VehicleItem}) => {

@@ -1,4 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+// types
 import { InitialState, VehicleItem } from "../../types/types";
  
 

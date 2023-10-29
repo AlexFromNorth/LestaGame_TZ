@@ -1,6 +1,8 @@
+// redux
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { filterByLvl, filterVehicles } from "../../../redux/slices/itemsSlice";
+
 
 function LevelSelector({ cleanTable }:{cleanTable:boolean}) {
   const dispatch = useDispatch();

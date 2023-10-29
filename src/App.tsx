@@ -1,18 +1,28 @@
-import React, {  useCallback } from "react";
+//other deps
+import {  useCallback } from "react";
 
-
+//styles
 import styles from "./App.module.scss";
-import { GET_VEHICLES } from "./api/api";
-import { VehicleItem } from "./types/types";
 
+//apollo
+import { GET_VEHICLES } from "./api/api";
+import { useQuery } from "@apollo/client";
+
+//redux
 import { addItems } from "./redux/slices/itemsSlice";
 import { useDispatch, useSelector } from "react-redux";
-
-import { useQuery } from "@apollo/client";
-import CartItem from "./components/cartItem/CartItem";
-import Optionals from "./components/optionals/Optionals";
 import { vehicles } from "./redux/selectors/vehiclesSelector";
 
+//components
+import CartItem from "./components/cartItem/CartItem";
+import Optionals from "./components/optionals/Optionals";
+
+//types
+import { VehicleItem } from "./types/types";
+
+//------------
+// App
+//------------
 function App() {
   const dispatch = useDispatch();
 

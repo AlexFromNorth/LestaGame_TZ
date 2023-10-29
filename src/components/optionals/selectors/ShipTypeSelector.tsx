@@ -1,8 +1,10 @@
+// redux
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { filterByType, filterVehicles } from '../../../redux/slices/itemsSlice';
 
 const shipTypes = ["Submarine", "Destroyer", "Cruiser", "Battleship", "Aircraft Carrier"];
+
 
 function ShipTypeSelector({cleanTable}:{cleanTable:boolean}) {
     const dispatch = useDispatch()
