@@ -1,4 +1,36 @@
-.wrapper{
-    display: flex;
-    justify-content: space-between;
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+
+  button {
+    height: auto;
+    padding: 10px;
+    margin-top: -5px;
+    margin-left: 5px;
+  }
+
+  label{
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+  select {
+    width: 14em;
+    padding: 2px 5px;
+  }
+  @media (max-width: 1365px) {
+    button {
+        padding: 5px;
+        margin-top: 0px;
+      }
+    }
+    @media (max-width: 800px) {
+    &{
+        flex-direction: column;
+
+        > *{
+            margin-bottom: 5px;
+        }
+    }
+    }
 }

@@ -17,7 +17,7 @@ function ShipTypeSelector() {
 
   return (
     <div>
-      <label htmlFor="shipTypeSelect">Выберите тип корабля:</label>
+      <label htmlFor="shipTypeSelect">Выберите тип корабля: </label>
       <select
         id="shipTypeSelect"
         value={selectedShipType}
@@ -30,7 +30,6 @@ function ShipTypeSelector() {
           </option>
         ))}
       </select>
-      <p>Выбранный тип корабля: {selectedShipType}</p>
     </div>
   );
 }

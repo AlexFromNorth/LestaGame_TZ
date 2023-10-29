@@ -33,7 +33,6 @@ function NationalSelector() {
           </option>
         ))}
       </select>
-      <p>Выбранная страна: {selectedCountry}</p>
     </div>
   );
 }
