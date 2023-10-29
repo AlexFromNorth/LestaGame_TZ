@@ -7,11 +7,11 @@ const countries = [
   'Italy', 'Commonwealth', 'Pan-America', 'Europe', 'The Netherlands', 'Spain'
 ];
 
-function NationalSelector({cleanTable}) {
+function NationalSelector({cleanTable}:{cleanTable:boolean}) {
   const dispatch = useDispatch()
   const [selectedCountry, setSelectedCountry] = useState('');
 
-  const handleCountryChange = (event) => {
+  const handleCountryChange:React.ChangeEventHandler<HTMLSelectElement> | undefined = (event) => {
     setSelectedCountry(event.target.value);
     dispatch(filterByNation(event.target.value))
     dispatch(filterVehicles())

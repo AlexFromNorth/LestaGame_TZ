@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./cartItem.module.scss";
+import { VehicleItem } from "../../types/types";
 
-const CartItem = ({ item }) => {
+const CartItem = ({ item }:{item:VehicleItem}) => {
   return (
     <div
       className={styles.wrapper}

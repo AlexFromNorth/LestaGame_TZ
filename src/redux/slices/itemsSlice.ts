@@ -1,9 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { Vehicles } from "../../types/types";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { InitialState, VehicleItem } from "../../types/types";
+ 
 
-const initialState = {
+const initialState:InitialState = {
   data: [],
-//   isFiltered: [false, false, false],
   filteredData: [],
   filter: {
     nation: "",
@@ -17,13 +17,13 @@ const itemsSlice = createSlice({
   initialState,
   reducers: {
 
-    filterByNation(state, action) {
+    filterByNation(state, action:PayloadAction<string>) {
       state.filter.nation = action.payload;
     },
-    filterByType(state, action) {
+    filterByType(state, action:PayloadAction<string>) {
       state.filter.type = action.payload;
     },
-    filterByLvl(state, action) {
+    filterByLvl(state, action:PayloadAction<string>) {
       state.filter.lvl = +action.payload;
     },
     filterVehicles(state) {
@@ -43,13 +43,11 @@ const itemsSlice = createSlice({
       
         state.filteredData = filteredDatas;
       },
-    addItems(state, action) {
+    addItems(state, action:PayloadAction<VehicleItem[]>) {
       state.data = action.payload;
-    //   state.isFiltered = [false, false, false];
       state.filteredData = state.data;
     },
     resetFilter(state) {
-    //   state.isFiltered = [false, false, false];
       state.filteredData = state.data;
     },
   },

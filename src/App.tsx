@@ -1,30 +1,28 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, {  useCallback } from "react";
 
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+
 import styles from "./App.module.scss";
 import { GET_VEHICLES } from "./api/api";
-import Search from "./components/optionals/Optionals";
-import { Vehicles } from "./types/types";
+import { VehicleItem } from "./types/types";
 
-import { addItems, filterByNation } from "./redux/slices/itemsSlice";
+import { addItems } from "./redux/slices/itemsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import { useQuery } from "@apollo/client";
-import CartItem from "./components/cartItem/cartItem";
+import CartItem from "./components/cartItem/CartItem";
 import Optionals from "./components/optionals/Optionals";
+import { vehicles } from "./redux/selectors/vehiclesSelector";
 
 function App() {
   const dispatch = useDispatch();
 
   const { loading, error } = useQuery(GET_VEHICLES, {
     onCompleted(data) {
-      dispatch(addItems(data.vehicles));
+      dispatch(addItems(data.vehicles as VehicleItem[]));
     },
   });
 
-  const data = useSelector((state) => state.main);
-  // console.log(data)
+  const data = useSelector(vehicles);
 
   const renderContent = useCallback(() => {
     if (error) {
@@ -40,7 +38,7 @@ function App() {
         </div>
       );
     } else {
-      return data?.filteredData.map((item: Vehicles, index) => (
+      return data?.filteredData.map((item: VehicleItem, index) => (
         <CartItem key={index} item={item}  />
       ));
     }

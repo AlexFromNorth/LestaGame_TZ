@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { filterByLvl, filterVehicles } from "../../../redux/slices/itemsSlice";
 
-function LevelSelector({ cleanTable }) {
+function LevelSelector({ cleanTable }:{cleanTable:boolean}) {
   const dispatch = useDispatch();
   const [selectedLevel, setSelectedLevel] = useState(0);
 
-  const handleLevelChange = (event) => {
-    setSelectedLevel(event.target.value);
+  const handleLevelChange:React.ChangeEventHandler<HTMLSelectElement> | undefined = (event) => {
+    setSelectedLevel(+event.target.value);
     dispatch(filterByLvl(event.target.value));
     dispatch(filterVehicles());
   };
