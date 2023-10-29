@@ -24,7 +24,7 @@ function App() {
   });
 
   const data = useSelector((state) => state.main);
-  console.log(data)
+  // console.log(data)
 
   const renderContent = useCallback(() => {
     if (error) {

@@ -3,7 +3,7 @@ import { Vehicles } from "../../types/types";
 
 const initialState = {
   data: [],
-  isFiltered: [false, false, false],
+//   isFiltered: [false, false, false],
   filteredData: [],
   filter: {
     nation: "",
@@ -27,29 +27,29 @@ const itemsSlice = createSlice({
       state.filter.lvl = +action.payload;
     },
     filterVehicles(state) {
-        let filteredData = state.data;
+        let filteredDatas = state.data;
       
         if (state.filter.nation.length > 0) {
-          filteredData = filteredData.filter((item) => item.nation.title === state.filter.nation);
+          filteredDatas = filteredDatas.filter((item) => item.nation.title === state.filter.nation);
         }
       
         if (state.filter.type.length > 0) {
-          filteredData = filteredData.filter((item) => item.type.title === state.filter.type);
+          filteredDatas = filteredDatas.filter((item) => item.type.title === state.filter.type);
         }
       
         if (state.filter.lvl > 0) {
-          filteredData = filteredData.filter((item) => item.level === state.filter.lvl);
+          filteredDatas = filteredDatas.filter((item) => item.level === state.filter.lvl);
         }
       
-        state.filteredData = filteredData;
+        state.filteredData = filteredDatas;
       },
     addItems(state, action) {
       state.data = action.payload;
-      state.isFiltered = [false, false, false];
+    //   state.isFiltered = [false, false, false];
       state.filteredData = state.data;
     },
     resetFilter(state) {
-      state.isFiltered = [false, false, false];
+    //   state.isFiltered = [false, false, false];
       state.filteredData = state.data;
     },
   },
