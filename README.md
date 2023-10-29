@@ -1,4 +1,4 @@
-# Проект [VK](https://github.com/AlexFromNorth/vk) | Frontend / Firebase
+# Проект [LestaGame_TZ](https://github.com/AlexFromNorth/LestaGame_TZ.git) | React / Toolkit / Apollo
 
 ### 📜 Описание:
 Single Page Application c использованием `React` созданный для отображения кораблей из игры "Мир кораблей". Созданно с применением `Vite` и имеет переиспользуемые компоненты. Данные берутся через через запрос на Апи используя `Apollo`. Для хранений данных применен store от `Redux/Toolkit`.
@@ -10,7 +10,7 @@ Single Page Application c использованием `React` созданны�
 ### ⚙️ Функционал:
 * Single Page Application на Create React App в рамках одной страницы без перезагрузок.
 
-* Запрос к Апи
+* Запрос к Api
   
 * Фильтрация данных по элементам Section
 
@@ -43,7 +43,7 @@ Single Page Application c использованием `React` созданны�
 <img src="src/assets/filters.png" alt="demo filters" >
 <br />
 <br />
-<img src="src/assets/adaptive.png" alt="demo filters" >
+<img src="src/assets/adapriveMobile.png" alt="demo adaptive" >
 <br />
 <br />
 
