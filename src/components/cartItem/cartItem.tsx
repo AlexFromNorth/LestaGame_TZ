@@ -4,6 +4,10 @@ import styles from "./cartItem.module.scss";
 // types
 import { VehicleItem } from "../../types/types";
 
+
+//------------
+// CartItem
+//------------
 const CartItem = ({ item }:{item:VehicleItem}) => {
   return (
     <div

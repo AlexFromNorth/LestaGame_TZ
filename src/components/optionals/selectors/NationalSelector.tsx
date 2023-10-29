@@ -3,15 +3,20 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { filterByNation, filterVehicles } from '../../../redux/slices/itemsSlice';
 
-const countries = [
-  'Japan', 'U.S.A.', 'U.S.S.R.', 'Germany', 'U.K.', 'France', 'Pan-Asia',
-  'Italy', 'Commonwealth', 'Pan-America', 'Europe', 'The Netherlands', 'Spain'
-];
+// types
+import { VehicleItem } from '../../../types/types';
 
 
-function NationalSelector({cleanTable}:{cleanTable:boolean}) {
+
+//------------
+// NationalSelector
+//------------
+function NationalSelector({cleanTable, data}:{cleanTable:boolean, data:VehicleItem[]}) {
   const dispatch = useDispatch()
   const [selectedCountry, setSelectedCountry] = useState('');
+
+  const uniqueNations = Array.from(new Set(data.map(item => item.nation.title)));
+  uniqueNations.sort((a, b) => a.localeCompare(b));
 
   const handleCountryChange:React.ChangeEventHandler<HTMLSelectElement> | undefined = (event) => {
     setSelectedCountry(event.target.value);
@@ -34,7 +39,7 @@ function NationalSelector({cleanTable}:{cleanTable:boolean}) {
         onChange={handleCountryChange}
       >
         <option value="">Выберите страну</option>
-        {countries.map((country, index) => (
+        {uniqueNations.map((country, index) => (
           <option key={index} value={country}>
             {country}
           </option>

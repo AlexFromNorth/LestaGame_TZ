@@ -3,12 +3,20 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { filterByType, filterVehicles } from '../../../redux/slices/itemsSlice';
 
-const shipTypes = ["Submarine", "Destroyer", "Cruiser", "Battleship", "Aircraft Carrier"];
+// types
+import { VehicleItem } from '../../../types/types';
 
 
-function ShipTypeSelector({cleanTable}:{cleanTable:boolean}) {
-    const dispatch = useDispatch()
+
+//------------
+// ShipTypeSelector
+//------------
+function ShipTypeSelector({cleanTable, data}:{cleanTable:boolean, data:VehicleItem[]}) {
+  const dispatch = useDispatch()
   const [selectedShipType, setSelectedShipType] = useState('');
+
+  const uniqueType = Array.from(new Set(data.map(item => item.type.title)));
+  uniqueType.sort((a, b) => a.localeCompare(b));
 
   const handleShipTypeChange:React.ChangeEventHandler<HTMLSelectElement> | undefined = (event) => {
     setSelectedShipType(event.target.value);
@@ -31,7 +39,7 @@ function ShipTypeSelector({cleanTable}:{cleanTable:boolean}) {
         onChange={handleShipTypeChange}
       >
         <option value="">Выберите тип корабля</option>
-        {shipTypes.map((type, index) => (
+        {uniqueType.map((type, index) => (
           <option key={index} value={type}>
             {type}
           </option>

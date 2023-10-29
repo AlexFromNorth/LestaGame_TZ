@@ -22,9 +22,9 @@ const Optionals = () => {
 
   return (
     <div className={styles.wrapper}>
-      <LevelSelector cleanTable={cleanTable}/>
-      <NationalSelector cleanTable={cleanTable}/>
-      <ShipTypeSelector cleanTable={cleanTable}/>
+      <LevelSelector cleanTable={cleanTable} data={data.data}/>
+      <NationalSelector cleanTable={cleanTable} data={data.data}/>
+      <ShipTypeSelector cleanTable={cleanTable} data={data.data}/>
       <button onClick={()=>{dispatch(resetFilter())}}>Очистить фильтрацию</button>
     </div>
   );

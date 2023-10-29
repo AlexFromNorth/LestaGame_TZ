@@ -3,10 +3,20 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { filterByLvl, filterVehicles } from "../../../redux/slices/itemsSlice";
 
+// types
+import { VehicleItem } from "../../../types/types";
 
-function LevelSelector({ cleanTable }:{cleanTable:boolean}) {
+
+
+//------------
+// LevelSelector
+//------------
+function LevelSelector({ cleanTable, data }:{cleanTable:boolean, data:VehicleItem[]}) {
   const dispatch = useDispatch();
   const [selectedLevel, setSelectedLevel] = useState(0);
+
+  const uniqueLevels = Array.from(new Set(data.map(item => item.level)));
+  uniqueLevels.sort((a, b) => a - b);
 
   const handleLevelChange:React.ChangeEventHandler<HTMLSelectElement> | undefined = (event) => {
     setSelectedLevel(+event.target.value);
@@ -29,11 +39,11 @@ function LevelSelector({ cleanTable }:{cleanTable:boolean}) {
         onChange={handleLevelChange}
       >
         <option value="">Выберите уровень</option>
-        {Array.from({ length: 10 }, (_, index) => (
-          <option key={index + 1} value={index + 1}>
-            {index + 1}
-          </option>
-        ))}
+          {uniqueLevels.map((item, index) => (
+        <option key={index} value={item}>
+      {item}
+    </option>
+  ))}
       </select>
     </div>
   );

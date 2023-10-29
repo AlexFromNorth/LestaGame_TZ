@@ -1,30 +1,45 @@
-# React + TypeScript + Vite
+# Проект [VK](https://github.com/AlexFromNorth/vk) | Frontend / Firebase
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### 📜 Описание:
+Single Page Application c использованием `React` созданный для отображения кораблей из игры "Мир кораблей". Созданно с применением `Vite` и имеет переиспользуемые компоненты. Данные берутся через через запрос на Апи используя `Apollo`. Для хранений данных применен store от `Redux/Toolkit`.
 
-Currently, two official plugins are available:
+### 📲 Как пользоватся:
+* Откройте веб-страницу(инструкция прикреплена ниже) и отфильтруйте корабли по необходимым критериям.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### ⚙️ Функционал:
+* Single Page Application на Create React App в рамках одной страницы без перезагрузок.
 
-## Expanding the ESLint configuration
+* Запрос к Апи
+  
+* Фильтрация данных по элементам Section
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+* Для формы авторизации использовал Firebase с валидацией.
 
 
-`react` `redux` `redux/toolkit` `react-dom` `apollo` `scss`
+### 🥞 Стек:
+
+ `React` `Redux/Toolkit` `TypeScript` `Apollo` `SCSS`
+
+### 💽 Установка и запуск:
+
+1. Склонировать репозиторий в текущую папку:
+
+```git clone https://github.com/AlexFromNorth/LestaGame_TZ.git ./```
+
+2. Установить зависимости:
+
+```yarn install```
+
+3. Запустить проект в режиме разработки:
+
+```yarn start или yarn run dev```
+
+<br />
+<br />
+<img src="src/assets/main.png" alt="demo main">
+<br />
+<br />
+<img src="src/assets/filters.png" alt="demo filters" >
+<br />
+<br />
+
