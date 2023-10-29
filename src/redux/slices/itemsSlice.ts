@@ -50,6 +50,9 @@ const itemsSlice = createSlice({
       state.filteredData = state.data;
     },
     resetFilter(state) {
+      state.filter.nation = "";
+      state.filter.type = "";
+      state.filter.lvl = 0;
       state.filteredData = state.data;
     },
   },
