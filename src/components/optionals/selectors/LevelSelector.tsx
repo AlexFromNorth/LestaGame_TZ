@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { filterByLvl } from '../../../redux/slices/itemsSlice';
+import { filterByLvl, filterVehicles } from '../../../redux/slices/itemsSlice';
 
 function LevelSelector() {
   const dispatch = useDispatch()
@@ -9,6 +9,7 @@ function LevelSelector() {
   const handleLevelChange = (event) => {
     setSelectedLevel(event.target.value);
     dispatch(filterByLvl(event.target.value))
+    dispatch(filterVehicles())
   };
 
   return (

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { filterByType } from '../../../redux/slices/itemsSlice';
+import { filterByType, filterVehicles } from '../../../redux/slices/itemsSlice';
 
 const shipTypes = ["Submarine", "Destroyer", "Cruiser", "Battleship", "Aircraft Carrier"];
 
@@ -11,6 +11,7 @@ function ShipTypeSelector() {
   const handleShipTypeChange = (event) => {
     setSelectedShipType(event.target.value);
     dispatch(filterByType(event.target.value))
+    dispatch(filterVehicles())
 
   };
 

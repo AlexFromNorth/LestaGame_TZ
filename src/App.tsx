@@ -44,7 +44,7 @@ function App() {
         <CartItem key={index} item={item}  />
       ));
     }
-  }, [error, data.data, data.filteredData]);
+  }, [error, data]);
 
   if (loading) {
     return (

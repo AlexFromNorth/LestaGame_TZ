@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { filterByNation } from '../../../redux/slices/itemsSlice';
+import { filterByNation, filterVehicles } from '../../../redux/slices/itemsSlice';
 
 const countries = [
   'Japan', 'U.S.A.', 'U.S.S.R.', 'Germany', 'U.K.', 'France', 'Pan-Asia',
@@ -14,6 +14,8 @@ function NationalSelector() {
   const handleCountryChange = (event) => {
     setSelectedCountry(event.target.value);
     dispatch(filterByNation(event.target.value))
+    dispatch(filterVehicles())
+
   };
 
   return (
